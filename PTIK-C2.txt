@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+
+    //Initializing
+    char choice;
+    int i, j, record=0, totalrecord;
+    int id[record];
+    string name[record];
+    double price[record];
+    bool back=true;
+    string none;
+  }
