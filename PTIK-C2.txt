@@ -11,4 +11,19 @@ int main(){
     double price[record];
     bool back=true;
     string none;
-  }
+
+//Menu
+    while(back=true){   
+        cout<<"*******************************"<<endl;
+        cout<<"[A] Add Record"<<endl;
+        cout<<"[V] View Record"<<endl;
+        cout<<"[E] Edit Record"<<endl;
+        cout<<"[D] Delete Record"<<endl;
+        cout<<"[L] View All Record"<<endl;
+        cout<<"Enter your choice and press return: "<<endl;
+
+        cin >> choice;
+
+        switch (choice){
+
+  
