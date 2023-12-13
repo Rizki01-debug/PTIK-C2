@@ -1,29 +1,144 @@
+// Program aplikasi CRUD dengan menggunakan C++
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
 
-int main(){
+// Struktur data untuk menyimpan data motor
+struct handpone {
+  string nama;
+  int ;
+  double ;
+};
 
-    //Initializing
-    char choice;
-    int i, j, record=0, totalrecord;
-    int id[record];
-    string name[record];
-    double price[record];
-    bool back=true;
-    string none;
+// Fungsi untuk menampilkan menu pilihan
+void tampilkanMenu() {
+  cout << "Pilih operasi yang ingin Anda lakukan:\n";
+  cout << "1. Create (Menambahkan data handpone )\n";
+  cout << "2. Read (Menampilkan data handpone )\n";
+  cout << "3. Update (Mengubah data handpone)\n";
+  cout << "4. Delete (Menghapus data handpone)\n";
+  cout << "5. Exit (Keluar dari handpone )\n";
+}
 
-//Menu
-    while(back=true){   
-        cout<<"*******************************"<<endl;
-        cout<<"[A] Add Record"<<endl;
-        cout<<"[V] View Record"<<endl;
-        cout<<"[E] Edit Record"<<endl;
-        cout<<"[D] Delete Record"<<endl;
-        cout<<"[L] View All Record"<<endl;
-        cout<<"Enter your choice and press return: "<<endl;
+// Fungsi untuk menambahkan data mahasiswa ke dalam vektor
+void tambahData(vector<Mahasiswa>& data) {
+  Mahasiswa m;
+  cout << "Masukkan brand handpone: ";
+  cin >> m.brand;
+  cout << "Masukkan tipe handpone: ";
+  cin >> m.tipe;
+  cout << "Masukkan ukuran layar handpone: ";
+  cin >> m.ukuran;
+  cout << "Masukkan ram handpone: ";
+  cin >> m.ram;
+  cout << "Masukkan battery handpone: ";
+  cin >> m.battery;
+  cout << "Masukkan kamera depan handpone: ";
+  cin >> m.kamera;
+  cout << "Masukkan kamera belakang handpone: ";
+  cin >> m.kamera;
+  cout << "Masukkan harga handpone: ";
+  cin >> m.harga;
+  data.push_back(m); 
+  cout << "Data mahasiswa berhasil ditambahkan.\n";
+}
 
-        cin >> choice;
+// Fungsi untuk menampilkan data mahasiswa dari vektor
+void tampilkanData(const vector<Mahasiswa>& data) {
+  if (data.empty()) {
+    cout << "Tidak ada data handpone.\n";
+    return;
+  }
+  cout << "Data handpone yang tersimpan:\n";
+  cout << "No.\tbrand\ttipe\tukuran\tram\tukuran\tbattery\tkamera\tbattery\tkamera\tkamera\tharga\n";
+  for (int i = 0; i < data.size(); i++) { 
+    cout << i + 1 << "\t" << data[i].brand  << "\t" << tipe [i]. << "\t" << ukuran [i].ram << "\t" << battrey << "\t" << kamera << "\t" << kamera<< "\t" << harga <<"\n";
+  }
 
-        switch (choice){
+// Fungsi untuk mengubah data mahasiswa dari vektor berdasarkan indeks
+void ubahData(vector<handpone>& data) {
+  if (data.empty()) { 
+    cout << "Tidak ada data handpone yang dapat diubah.\n";
+    return;
+  }
+  int indeks;
+  cout << "Masukkan data handpone yang ingin diubah: ";
+  cin >> indeks;
+  if (indeks < 1 || indeks > data.size()) { 
+    cout << " data handpone tidak valid.\n";
+    return;
+  }
+  indeks--;
+  handpone m;
+  cout << "Masukkan brand handpone baru: ";
+  cin >> m.brand;
+  cout << "Masukkan tipe handpone baru: ";
+  cin >> m.tipe;
+  cout << "Masukkan ukuran layar handpone baru: ";
+  cin >> m.ukuran;
+  cout << "Masukkan ram handpone baru: ";
+  cin >> m.ram;
+  cout << "Masukkan battery handpone baru: ";
+  cin >> m.battery;
+  cout << "Masukkan kamera depan handpone baru: ";
+  cin >> m.kamera depan;
+  cout << "Masukkan kamera belakang handpone baru: ";
+  cin >> m.kamera belakang;
+  cout << "Masukkan harga handpone baru: ";
+  cin >> m.harga;
+  data[indeks] = m; // Mengganti data mahasiswa lama dengan data mahasiswa baru
+  cout << "Data mahasiswa berhasil diubah.\n";
+}
 
-  
+// Fungsi untuk menghapus data mahasiswa dari vektor berdasarkan indeks
+void hapusData(vector<handphone>& data) {
+  if (data.empty()) { 
+    cout << "Tidak ada data handphone yang dapat dihapus.\n";
+    return;
+  }
+  int indeks;
+  cout << "Masukkan data handphone yang ingin dihapus: ";
+  cin >> indeks;
+  if (indeks < 1 || indeks > data.size()) { 
+    cout << " data handphone tidak valid.\n";
+    return;
+  }
+  indeks--;
+  data.erase(data.begin() + indeks); 
+  cout << "Data handphone berhasil dihapus.\n";
+}
+
+// Fungsi utama untuk menjalankan program aplikasi CRUD
+int main() {
+  vector<Mahasiswa> data; // Vektor untuk menyimpan data mahasiswa
+  int pilihan; // Variabel untuk menyimpan pilihan operasi
+  bool selesai = false; // Variabel untuk menentukan apakah program selesai atau tidak
+  while (!selesai) { // Looping selama program belum selesai
+    tampilkanMenu(); // Menampilkan menu pilihan
+    cout << "Masukkan pilihan Anda: ";
+    cin >> pilihan;
+    switch (pilihan) { // Menentukan operasi yang akan dilakukan berdasarkan pilihan
+      case 1: // Create
+        tambahData(data); // Menambahkan data mahasiswa
+        break;
+      case 2: // Read
+        tampilkanData(data); // Menampilkan data mahasiswa
+        break;
+      case 3: // Update
+        ubahData(data); // Mengubah data mahasiswa
+        break;
+      case 4: // Delete
+        hapusData(data); // Menghapus data mahasiswa
+        break;
+      case 5: // Exit
+        selesai = true; // Mengakhiri program
+        cout << "Terima kasih telah menggunakan program aplikasi CRUD ini.\n";
+        break;
+      default: // Pilihan tidak valid
+        cout << "Pilihan Anda tidak valid. Silakan coba lagi.\n";
+        break;
+    }
+  }
+  return 0;
+}
